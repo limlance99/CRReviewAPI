@@ -1,11 +1,5 @@
 package database
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo"
-)
-
 // PopulateDB temporary thing that populates the db
 func PopulateDB() {
 
@@ -50,18 +44,15 @@ func PopulateDB() {
 	for _, facilityavailable := range facilitiesavailable {
 		Db.Debug().Create(&facilityavailable)
 	}
-}
 
-type h map[string]interface{}
-
-// TestThing is for testing
-func TestThing(c echo.Context) error {
-	message := &h{
-		"test": "hello this works!",
+	reviews := []Review{
+		Review{CRid: 1, Rating1: 4, Rating2: 3, Rating3: 5, ReviewText: "Nothing special, could've been way better tbh"},
+		Review{CRid: 1, Rating1: 5, Rating2: 5, Rating3: 5, ReviewText: "I love it here!"},
+		Review{CRid: 2, Rating1: 4, Rating2: 3, Rating3: 5, ReviewText: "bruh ang ganda ng bidet nila dito"},
+		Review{CRid: 3, Rating1: 0, Rating2: 0, Rating3: 0, ReviewText: "ew walang tissue or soap or anything >:( bad experience"},
 	}
-	return c.JSONPretty(
-		http.StatusOK,
-		message,
-		"   ",
-	)
+
+	for _, review := range reviews {
+		Db.Debug().Create(&review)
+	}
 }
