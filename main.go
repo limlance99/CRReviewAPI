@@ -18,7 +18,7 @@ func main() {
 	router.Use(middleware.Recover())
 	router.Use(middleware.CORS())
 
-	api := router.Group("/api/get")
+	api := router.Group("/get")
 	{
 		api.GET("/crs", queries.GetCRs)
 		api.GET("/locations", queries.GetLocations)
