@@ -1,0 +1,1 @@
+web: bin/database_api
