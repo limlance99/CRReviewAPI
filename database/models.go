@@ -28,11 +28,9 @@ type (
 	CR struct {
 		ID         uint `gorm:"primary_key"`
 		CreatedAt  time.Time
-		Location   Location `gorm:"foreignkey:locationid"`
-		LocationID int      `gorm:"column:locationid; not null"`
-		Reviews    []Review `gorm:"foreignkey:crid"`
-		Floor      int      `gorm:"column:floor; type:int; not null"`
-		Gender     string   `gorm:"column:gender; type:char(1); not null"`
+		LocationID int    `gorm:"column:locationid; not null"`
+		Floor      int    `gorm:"column:floor; type:int; not null"`
+		Gender     string `gorm:"column:gender; type:char(1); not null"`
 	}
 
 	// Facility contains all of the CR facilities.
