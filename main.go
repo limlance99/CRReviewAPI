@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/limlance99/database_api/database"
+	"github.com/limlance99/crreviewapi/database"
 )
 
 func main() {

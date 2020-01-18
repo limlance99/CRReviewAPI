@@ -1,1 +1,1 @@
-web: bin/database_api
+web: bin/crreviewapi

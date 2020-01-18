@@ -1,4 +1,4 @@
-module github.com/limlance99/database_api
+module github.com/limlance99/crreviewapi
 
 go 1.12
 
