@@ -7,6 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres" // for postgres
 	"github.com/joho/godotenv"
+	"github.com/limlance99/crreviewapi/models"
 )
 
 // Db is the pointer to our database
@@ -26,15 +27,13 @@ func Connect() {
 		fmt.Println(err)
 	}
 
-	// comment this out if not debugging
-	Db.DropTableIfExists(&FacilityAvailable{}, &Review{}, &CR{}, &Location{}, &Facility{})
-
-	Db.AutoMigrate(
-		&Location{},
-		&CR{},
-		&Review{},
-		&Facility{},
-		&FacilityAvailable{},
+	// Drops existing tables then creates them again (resets db)
+	DropAndMigrate(
+		&models.FacilityAvailable{},
+		&models.Review{},
+		&models.CR{},
+		&models.Location{},
+		&models.Facility{},
 	)
 
 	// adding the foreign keys

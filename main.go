@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/limlance99/crreviewapi/database"
+	"github.com/limlance99/crreviewapi/queries"
 )
 
 func main() {
@@ -19,11 +20,11 @@ func main() {
 
 	api := router.Group("/api/get")
 	{
-		api.GET("/crs", database.GetCRs)
-		api.GET("/locations", database.GetLocations)
-		api.GET("/facilities", database.GetFacilities)
-		api.GET("/reviews/:id", database.GetCRReviews)
-		api.GET("/facilities/:id", database.GetCRFacilities)
+		api.GET("/crs", queries.GetCRs)
+		api.GET("/locations", queries.GetLocations)
+		api.GET("/facilities", queries.GetFacilities)
+		api.GET("/reviews/:id", queries.GetCRReviews)
+		api.GET("/facilities/:id", queries.GetCRFacilities)
 	}
 
 	port := os.Getenv("PORT")
