@@ -7,10 +7,11 @@ import (
 )
 
 // GetCRs returns all the CRs in the database
+// <url>/get/crs
 func GetCRs(c echo.Context) error {
 	crs := []models.CR{}
 
-	if database.Db.Debug().Find(&crs); crs == nil {
+	if database.Db.Debug().Preload("Location").Find(&crs); crs == nil {
 		return setErrorMessage(c)
 	}
 
@@ -18,6 +19,7 @@ func GetCRs(c echo.Context) error {
 }
 
 // GetLocations returns all the Locations in the database
+// <url>/get/locations
 func GetLocations(c echo.Context) error {
 	locations := []models.Location{}
 
@@ -29,6 +31,7 @@ func GetLocations(c echo.Context) error {
 }
 
 // GetFacilities returns all the Facilities in the database
+// <url>/get/facilities
 func GetFacilities(c echo.Context) error {
 	facilities := []models.Facility{}
 
@@ -40,18 +43,21 @@ func GetFacilities(c echo.Context) error {
 }
 
 // GetCRReviews returns all the reviews of one CR
+// <url>/get/reviews/:id
 func GetCRReviews(c echo.Context) error {
-	reviews := []models.Review{}
+	cr := models.CR{}
 	crid := c.Param("id")
 
-	if database.Db.Debug().Where("crid = ?", crid).Find(&reviews); reviews == nil {
+	database.Db.Debug().Set("gorm:auto_preload", true).First(&cr, crid)
+	if cr.ID == 0 {
 		return setErrorMessage(c)
 	}
 
-	return returnData(c, reviews)
+	return returnData(c, cr)
 }
 
 // GetCRFacilities returns all the Facilities of one CR
+// get/facilities/:id
 func GetCRFacilities(c echo.Context) error {
 	facilities := []models.Facility{}
 	crid := c.Param("id")

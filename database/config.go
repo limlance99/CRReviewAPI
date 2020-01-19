@@ -7,8 +7,8 @@ func DropAndMigrate(models ...interface{}) {
 
 	// comment this out if not debugging
 	for _, table := range models {
-		Db.DropTableIfExists(table)
-		Db.AutoMigrate(table)
+		Db.Debug().DropTableIfExists(table)
+		Db.Debug().AutoMigrate(table)
 	}
 
 }
@@ -17,13 +17,13 @@ func DropAndMigrate(models ...interface{}) {
 func AddForeignKeys() {
 
 	// Foreign key of reviews referencing a CR
-	Db.Model(&models.Review{}).AddForeignKey("crid", "crs(id)", "CASCADE", "CASCADE")
+	Db.Debug().Model(&models.Review{}).AddForeignKey("crid", "crs(id)", "CASCADE", "CASCADE")
 
 	// Foreign key of CRs referencing their location
-	Db.Model(&models.CR{}).AddForeignKey("locationid", "locations(locationid)", "CASCADE", "CASCADE")
+	Db.Debug().Model(&models.CR{}).AddForeignKey("locationid", "locations(locationid)", "CASCADE", "CASCADE")
 
 	// Foreign keys of FacilityAvailable
-	Db.Model(&models.FacilityAvailable{}).AddForeignKey("crid", "crs(id)", "CASCADE", "CASCADE")
-	Db.Model(&models.FacilityAvailable{}).AddForeignKey("fid", "facilities(fid)", "CASCADE", "CASCADE")
+	Db.Debug().Model(&models.FacilityAvailable{}).AddForeignKey("crid", "crs(id)", "CASCADE", "CASCADE")
+	Db.Debug().Model(&models.FacilityAvailable{}).AddForeignKey("fid", "facilities(fid)", "CASCADE", "CASCADE")
 
 }
