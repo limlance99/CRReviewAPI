@@ -18,13 +18,19 @@ func main() {
 	router.Use(middleware.Recover())
 	router.Use(middleware.CORS())
 
-	api := router.Group("/get")
+	api := router.Group("/api")
 	{
+		// GET requests
 		api.GET("/crs", queries.GetCRs)
 		api.GET("/locations", queries.GetLocations)
 		api.GET("/facilities", queries.GetFacilities)
 		api.GET("/reviews/:id", queries.GetCRReviews)
 		api.GET("/facilities/:id", queries.GetCRFacilities)
+	}
+
+	apiPost := router.Group("/post")
+	{
+		apiPost.POST("/crs", queries.PostCRs)
 	}
 
 	port := os.Getenv("PORT")

@@ -7,7 +7,7 @@ import (
 )
 
 // GetCRs returns all the CRs in the database
-// <url>/get/crs
+// <url>/api/crs
 func GetCRs(c echo.Context) error {
 	crs := []models.CR{}
 
@@ -19,7 +19,7 @@ func GetCRs(c echo.Context) error {
 }
 
 // GetLocations returns all the Locations in the database
-// <url>/get/locations
+// <url>/api/locations
 func GetLocations(c echo.Context) error {
 	locations := []models.Location{}
 
@@ -31,7 +31,7 @@ func GetLocations(c echo.Context) error {
 }
 
 // GetFacilities returns all the Facilities in the database
-// <url>/get/facilities
+// <url>/api/facilities
 func GetFacilities(c echo.Context) error {
 	facilities := []models.Facility{}
 
@@ -43,7 +43,7 @@ func GetFacilities(c echo.Context) error {
 }
 
 // GetCRReviews returns all the reviews of one CR
-// <url>/get/reviews/:id
+// <url>/api/reviews/:id
 func GetCRReviews(c echo.Context) error {
 	cr := models.CR{}
 	crid := c.Param("id")
@@ -57,7 +57,7 @@ func GetCRReviews(c echo.Context) error {
 }
 
 // GetCRFacilities returns all the Facilities of one CR
-// get/facilities/:id
+// <url>/api/facilities/:id
 func GetCRFacilities(c echo.Context) error {
 	facilities := []models.Facility{}
 	crid := c.Param("id")
