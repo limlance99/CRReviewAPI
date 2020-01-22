@@ -1,6 +1,8 @@
 package queries
 
 import (
+	"fmt"
+
 	"github.com/labstack/echo"
 	"github.com/limlance99/crreviewapi/database"
 	"github.com/limlance99/crreviewapi/models"
@@ -9,29 +11,30 @@ import (
 // PostCRs adds a new CR record to the database
 // <url>/api/crs
 func PostCRs(c echo.Context) error {
-	type data struct {
-		locationid uint
-		floor      int
-		gender     string
-		facilities []uint
+	type Data struct {
+		Locationid uint   `json:"locationid"`
+		Floor      int    `json:"floor"`
+		Gender     string `json:"gender"`
+		Facilities []uint `json:"facilities"`
 	}
 
-	requestBody := data{}
+	requestBody := Data{}
 	newCR := models.CR{}
 
 	c.Bind(&requestBody)
 
-	newCR.LocationID = requestBody.locationid
-	newCR.Floor = requestBody.floor
-	newCR.Gender = requestBody.gender
+	newCR.LocationID = requestBody.Locationid
+	newCR.Floor = requestBody.Floor
+	newCR.Gender = requestBody.Gender
 
 	database.Db.Debug().Create(&newCR)
-	database.Db.First(&newCR)
 
 	newFacilityAvailable := models.FacilityAvailable{CRid: newCR.ID}
-	for _, fid := range requestBody.facilities {
+	fmt.Println(requestBody.Facilities)
+
+	for _, fid := range requestBody.Facilities {
 		newFacilityAvailable.Fid = fid
-		database.Db.Create(&newFacilityAvailable)
+		database.Db.Debug().Create(&newFacilityAvailable)
 	}
 
 	return returnData(c, newCR)
