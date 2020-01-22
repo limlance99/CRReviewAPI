@@ -19,6 +19,7 @@ func PopulateDB() {
 		models.Location{Address: "Palma Hall", X: 0, Y: 0},
 		models.Location{Address: "DCS", X: 0, Y: 0},
 		models.Location{Address: "Math", X: 0, Y: 0},
+		models.Location{Address: "Biology", X: 0, Y: 0}
 	}
 
 	for _, location := range locations {
