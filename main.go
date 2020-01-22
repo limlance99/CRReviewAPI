@@ -26,11 +26,9 @@ func main() {
 		api.GET("/facilities", queries.GetFacilities)
 		api.GET("/reviews/:id", queries.GetCRReviews)
 		api.GET("/facilities/:id", queries.GetCRFacilities)
-	}
 
-	apiPost := router.Group("/post")
-	{
-		apiPost.POST("/crs", queries.PostCRs)
+		// POST requests
+		api.POST("/crs", queries.PostCRs)
 	}
 
 	port := os.Getenv("PORT")
