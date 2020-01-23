@@ -8,9 +8,9 @@ import (
 	"github.com/limlance99/crreviewapi/models"
 )
 
-// PostCRs adds a new CR record to the database
+// PostCR adds a new CR record to the database
 // <url>/api/crs
-func PostCRs(c echo.Context) error {
+func PostCR(c echo.Context) error {
 	type Data struct {
 		Locationid uint   `json:"locationid"`
 		Floor      int    `json:"floor"`
@@ -38,4 +38,14 @@ func PostCRs(c echo.Context) error {
 	}
 
 	return returnData(c, newCR)
+}
+
+// PostReview adds a new Review to the database
+func PostReview(c echo.Context) error {
+	newReview := models.Review{}
+	c.Bind(&newReview)
+
+	database.Db.Debug().Create(&newReview)
+
+	return returnData(c, newReview)
 }

@@ -28,7 +28,12 @@ func main() {
 		api.GET("/facilities/:id", queries.GetCRFacilities)
 
 		// POST requests
-		api.POST("/crs", queries.PostCRs)
+		api.POST("/crs", queries.PostCR)
+		api.POST("/reviews", queries.PostReview)
+
+		// DELETE requests
+		api.DELETE("/crs/:id", queries.DeleteCR)
+		api.DELETE("/reviews/:id", queries.DeleteReview)
 	}
 
 	port := os.Getenv("PORT")
