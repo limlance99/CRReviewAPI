@@ -49,3 +49,23 @@ func PostReview(c echo.Context) error {
 
 	return returnData(c, newReview)
 }
+
+// PostFacility adds a new Review to the database
+func PostFacility(c echo.Context) error {
+	newFacility := models.Facility{}
+	c.Bind(&newFacility)
+
+	database.Db.Debug().Create(&newFacility)
+
+	return returnData(c, newFacility)
+}
+
+// PostLocation adds a new Review to the database
+func PostLocation(c echo.Context) error {
+	newLocation := models.Location{}
+	c.Bind(&newLocation)
+
+	database.Db.Debug().Create(&newLocation)
+
+	return returnData(c, newLocation)
+}
