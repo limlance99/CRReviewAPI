@@ -30,6 +30,8 @@ func main() {
 		// POST requests
 		api.POST("/crs", queries.PostCR)
 		api.POST("/reviews", queries.PostReview)
+		api.POST("/facilities", queries.PostFacility)
+		api.POST("/locations", queries.PostLocation)
 
 		// DELETE requests
 		api.DELETE("/crs/:id", queries.DeleteCR)
