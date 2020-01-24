@@ -30,6 +30,7 @@ func PostCR(c echo.Context) error {
 	database.Db.Debug().Create(&newCR)
 
 	newFacilityAvailable := models.FacilityAvailable{CRid: newCR.ID}
+
 	fmt.Println(requestBody.Facilities)
 
 	for _, fid := range requestBody.Facilities {

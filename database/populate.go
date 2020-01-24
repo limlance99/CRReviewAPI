@@ -16,10 +16,10 @@ func PopulateDB() {
 	}
 
 	locations := []models.Location{
-		models.Location{Address: "Palma Hall", X: 0, Y: 0},
-		models.Location{Address: "DCS", X: 0, Y: 0},
-		models.Location{Address: "Math", X: 0, Y: 0},
-		models.Location{Address: "Biology", X: 0, Y: 0},
+		models.Location{Address: "Palma Hall", Latitude: 14.6537, Longitude: 121.0699},
+		models.Location{Address: "DCS", Latitude: 14.6486, Longitude: 121.0685},
+		models.Location{Address: "Math", Latitude: 14.6845, Longitude: 121.0715},
+		models.Location{Address: "CAL", Latitude: 14.6527, Longitude: 121.0674},
 	}
 
 	for _, location := range locations {
