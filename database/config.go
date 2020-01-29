@@ -1,8 +1,22 @@
+/*
+Authors: JV Afable, JP Chanchico, Lance Lim
+
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of
+the Department of Computer Science, College of Engineering,
+University of the Philippines, Diliman for the AY 2019-2020.
+
+Code History:
+	Jan 20, 2020: Lance Lim - Initialized file.
+*/
+
 package database
 
 import "github.com/limlance99/crreviewapi/models"
 
 // DropAndMigrate drops existing tables then creates them again
+//   models: ...interface{} syntax means it accepts any number of parameters (with any datatype) when called and stores
+//          them all in an array. main thing to be sent here should be the structs of the tables used.
 func DropAndMigrate(models ...interface{}) {
 
 	// comment this out if not debugging
