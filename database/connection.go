@@ -7,7 +7,7 @@ the Department of Computer Science, College of Engineering,
 University of the Philippines, Diliman for the AY 2019-2020.
 
 Code History:
-	Jan 20, 2020: Lance Lim - Initialized file.
+	Jan 20, 2020: JP Chanchico - Initialized file.
 */
 
 package database
