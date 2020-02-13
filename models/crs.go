@@ -8,7 +8,8 @@ University of the Philippines, Diliman for the AY 2019-2020.
 
 Code History:
 	Jan 20, 2020: Lance Lim - Initialized file.
-	Jan 21, 2020: Fixed foreign key associations.
+	Jan 21, 2020: Lance Lim - Fixed foreign key associations.
+	Feb 13, 2020: Lance Lim - Fixed bug.
 */
 
 package models
@@ -20,7 +21,7 @@ type CR struct {
 	ID         uint      `gorm:"primary_key" json:"id"`
 	CreatedAt  time.Time `json:"createdat"`
 	Location   Location  `gorm:"foreignkey:LocationID;association_foreignkey:LocationID" json:"location"`
-	Reviews    []Review  `gorm:"foreignkey:CRid;association_foreignkey:CRid" json:"reviews"`
+	Reviews    []Review  `gorm:"foreignkey:CRid;association_foreignkey:ID" json:"reviews"`
 	LocationID uint      `gorm:"column:locationid; not null" json:"locationid"`
 	Floor      int       `gorm:"column:floor; type:int; not null" json:"floor"`
 	Gender     string    `gorm:"column:gender; type:char(1); not null" json:"gender"`
