@@ -99,7 +99,7 @@ func PostLocation(c echo.Context) error {
 	return returnData(c, newLocation)
 }
 
-// PostFacilityEdit adds a new Review to the database
+// PostFacilityEdit Edits the Facilities of a CR in the database
 //	c echo.Context: this is a pointer to the entire request sent, including the address of the sender for the response. Auto-added when called in HTTP requests.
 func PostFacilityEdit(c echo.Context) error {
 
