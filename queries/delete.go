@@ -38,7 +38,7 @@ func DeleteCR(c echo.Context) error {
 func DeleteReview(c echo.Context) error {
 
 	// id: ID of the review to be deleted
-	id := c.Param("reviewid")
+	id := c.Param("id")
 
 	// ReviewtoDelete: struct to store the Review to be deleted
 	ReviewtoDelete := models.Review{}
