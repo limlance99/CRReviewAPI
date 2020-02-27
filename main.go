@@ -47,6 +47,7 @@ func main() {
 		api.POST("/reviews", queries.PostReview)
 		api.POST("/facilities", queries.PostFacility)
 		api.POST("/locations", queries.PostLocation)
+		api.POST("/facilities/edit", queries.PostFacilityEdit)
 
 		// DELETE requests
 		api.DELETE("/crs/:id", queries.DeleteCR)

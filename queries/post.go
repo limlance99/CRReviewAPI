@@ -98,3 +98,29 @@ func PostLocation(c echo.Context) error {
 
 	return returnData(c, newLocation)
 }
+
+// PostFacilityEdit adds a new Review to the database
+//	c echo.Context: this is a pointer to the entire request sent, including the address of the sender for the response. Auto-added when called in HTTP requests.
+func PostFacilityEdit(c echo.Context) error {
+
+	// Data: This struct is so that we can get the json data from the body
+	type Data struct {
+		Crid       uint   `json:"crid"`
+		Facilities []uint `json:"facilities"`
+	}
+	newFacilityEdit := Data{}
+	c.Bind(&newFacilityEdit)
+
+	Facility := models.FacilityAvailable{}
+
+	// delete all current facilities of CR that were already there.
+	database.Db.Debug().Delete(&Facility, "crid = ?", newFacilityEdit.Crid)
+	Facility.CRid = newFacilityEdit.Crid
+
+	// repopulate with the new edited list
+	for _, facilityid := range newFacilityEdit.Facilities {
+		Facility.Fid = facilityid
+		database.Db.Debug().Create(&Facility)
+	}
+	return returnData(c, newFacilityEdit)
+}
