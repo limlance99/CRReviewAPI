@@ -13,6 +13,8 @@ Code History:
 package auth
 
 import (
+	"crypto/sha256"
+	"fmt"
 	"net/http"
 	"os"
 	"time"
@@ -34,6 +36,11 @@ func Login(c echo.Context) error {
 	username := c.FormValue("username")
 	password := c.FormValue("password")
 
+	h := sha256.New()
+	h.Write([]byte(password))
+
+	hashedPassword := fmt.Sprintf("%x", h.Sum(nil))
+
 	_ = godotenv.Load()
 
 	adminUsername := os.Getenv("admin_username")
@@ -41,7 +48,7 @@ func Login(c echo.Context) error {
 	jwtSecret := os.Getenv("jwt_secret")
 
 	// Throws unauthorized error
-	if username != adminUsername || password != adminPassword {
+	if username != adminUsername || hashedPassword != adminPassword {
 		return echo.ErrUnauthorized
 	}
 

@@ -8,6 +8,7 @@ University of the Philippines, Diliman for the AY 2019-2020.
 
 Code History:
 	Jan 20, 2020: Lance Lim - Initialized file.
+	Mar 11, 2020: Lance Lim - Changed rating names to actual words.
 */
 
 package models
@@ -16,11 +17,11 @@ import "time"
 
 // Review contains the reviews of all of the CRs.
 type Review struct {
-	ID         uint      `gorm:"primary_key" json:"id"`
-	CreatedAt  time.Time `json:"createdat"`
-	CRid       uint      `gorm:"column:crid" json:"crid"`
-	Rating1    int       `gorm:"type:int" json:"rating1"`
-	Rating2    int       `gorm:"type:int" json:"rating2"`
-	Rating3    int       `gorm:"type:int" json:"rating3"`
-	ReviewText string    `gorm:"column:reviewtext; type:varchar(200)" json:"reviewtext"`
+	ID          uint      `gorm:"primary_key" json:"id"`
+	CreatedAt   time.Time `json:"createdat"`
+	CRid        uint      `gorm:"column:crid" json:"crid"`
+	Cleanliness int       `gorm:"type:int" json:"cleanliness"`
+	Facilities  int       `gorm:"type:int" json:"facilities"`
+	Comfort     int       `gorm:"type:int" json:"comfort"`
+	ReviewText  string    `gorm:"column:reviewtext; type:varchar(200)" json:"reviewtext"`
 }

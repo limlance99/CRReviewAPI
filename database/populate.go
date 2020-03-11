@@ -10,6 +10,7 @@ Code History:
 	Jan 20, 2020: JP Chanchico - Initialized file.
 	Jan 23, 2020: JP Chanchico - Updated dummy data.
 	Feb 13, 2020: Lance Lim - removed 0 ratings from dummy reviews.
+	Mar 10, 2020: Updated rating names.
 */
 
 package database
@@ -68,10 +69,10 @@ func PopulateDB() {
 
 	// reviews: array of Review structs holding dummy data
 	reviews := []models.Review{
-		models.Review{CRid: 1, Rating1: 4, Rating2: 3, Rating3: 5, ReviewText: "Nothing special, could've been way better tbh"},
-		models.Review{CRid: 1, Rating1: 5, Rating2: 5, Rating3: 5, ReviewText: "I love it here!"},
-		models.Review{CRid: 2, Rating1: 4, Rating2: 3, Rating3: 5, ReviewText: "bruh ang ganda ng bidet nila dito"},
-		models.Review{CRid: 3, Rating1: 1, Rating2: 1, Rating3: 1, ReviewText: "ew walang tissue or soap or anything >:( bad experience"},
+		models.Review{CRid: 1, Cleanliness: 4, Facilities: 3, Comfort: 5, ReviewText: "Nothing special, could've been way better tbh"},
+		models.Review{CRid: 1, Cleanliness: 5, Facilities: 5, Comfort: 5, ReviewText: "I love it here!"},
+		models.Review{CRid: 2, Cleanliness: 4, Facilities: 3, Comfort: 5, ReviewText: "bruh ang ganda ng bidet nila dito"},
+		models.Review{CRid: 3, Cleanliness: 1, Facilities: 1, Comfort: 1, ReviewText: "ew walang tissue or soap or anything >:( bad experience"},
 	}
 
 	for _, review := range reviews {
