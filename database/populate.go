@@ -33,10 +33,10 @@ func PopulateDB() {
 
 	// locations: array of Location structs holding dummy data
 	locations := []models.Location{
-		models.Location{Address: "Palma Hall", Latitude: 14.6537, Longitude: 121.0699},
-		models.Location{Address: "DCS", Latitude: 14.6486, Longitude: 121.0685},
-		models.Location{Address: "Math", Latitude: 14.6845, Longitude: 121.0715},
-		models.Location{Address: "CAL", Latitude: 14.6527, Longitude: 121.0674},
+		models.Location{Address: "Palma Hall", Latitude: 14.653526, Longitude: 121.069855},
+		models.Location{Address: "DCS", Latitude: 14.648648, Longitude: 121.068577},
+		models.Location{Address: "Math", Latitude: 14.684581, Longitude: 121.071432},
+		models.Location{Address: "CAL", Latitude: 14.652726, Longitude: 121.067393},
 	}
 
 	for _, location := range locations {
